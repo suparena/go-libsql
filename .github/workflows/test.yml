@@ -67,7 +67,11 @@ jobs:
             mingw-w64-x86_64-toolchain
 
       - name: Build
-        run: go build -v ./...
+        run: |
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            export PATH="/c/msys64/mingw64/bin:$PATH"
+          fi
+          go build -v ./...
 
       - name: Test
         if: matrix.os != 'windows'
@@ -82,4 +86,5 @@ jobs:
           CGO_ENABLED: 1
         run: |
           # Run build verification (no server required)
+          export PATH="/c/msys64/mingw64/bin:$PATH"
           go build -v ./...
