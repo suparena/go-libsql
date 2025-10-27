@@ -9,10 +9,7 @@ Currently only `linux amd64`, `linux arm64`, `darwin amd64`, `darwin arm64`, and
 We're working on adding support for more platforms.
 
 ## Status
-- Linux and macOS: Fully supported with precompiled libraries.
-- Windows: Fully supported with GNU-built precompiled libraries.
-
-
+- Linux, macOS, and Windows: Fully supported with precompiled libraries.
 
 ## Features
 
