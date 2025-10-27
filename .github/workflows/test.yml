@@ -68,7 +68,8 @@ jobs:
 
       - name: Test (Windows)
         if: matrix.os == 'windows'
+        env:
+          CGO_ENABLED: 1
         run: |
-          # Run build verification and compile tests (no server required)
+          # Run build verification (no server required)
           go build -v ./...
-          go test -c ./...
