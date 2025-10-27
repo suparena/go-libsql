@@ -86,5 +86,7 @@ jobs:
           CGO_ENABLED: 1
         run: |
           # Run build verification (no server required)
-          export PATH="/c/msys64/mingw64/bin:$PATH"
+          if ($env:RUNNER_OS -eq "Windows") {
+            $env:PATH = "/c/msys64/mingw64/bin;$env:PATH"
+          }
           go build -v ./...
