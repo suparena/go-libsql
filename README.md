@@ -10,12 +10,9 @@ We're working on adding support for more platforms.
 
 ## Status
 - Linux and macOS: Fully supported with precompiled libraries.
-- Windows: Support added to the Go bindings. The native library is available but built with MSVC ABI, which may cause linking issues with Go's MinGW GCC. A GNU-built version is needed for full compatibility.
+- Windows: Fully supported with GNU-built precompiled libraries.
 
-## TODO
-- Build libSQL native library with GNU toolchain for Windows to resolve ABI mismatch.
-- Test Windows builds and provide GNU precompiled libraries.
-- Update CI to include Windows builds.
+
 
 ## Features
 
