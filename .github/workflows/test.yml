@@ -66,19 +66,14 @@ jobs:
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-toolchain
 
-      - name: Build
-        run: |
-          if [ "$RUNNER_OS" = "Windows" ]; then
-            export PATH="/c/msys64/mingw64/bin:$PATH"
-          fi
-          go build -v ./...
-
       - name: Test
         if: matrix.os != 'windows'
         env:
           LIBSQL_PRIMARY_URL: "http://localhost:8080"
           LIBSQL_AUTH_TOKEN: ""
-        run: go test -v ./...
+        run: |
+          go build -v ./...
+          go test -v ./...
 
       - name: Test (Windows)
         if: matrix.os == 'windows'
