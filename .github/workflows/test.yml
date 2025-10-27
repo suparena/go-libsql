@@ -62,6 +62,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
+          path-type: inherit
           install: >-
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-toolchain
@@ -77,11 +78,10 @@ jobs:
 
       - name: Test (Windows)
         if: matrix.os == 'windows'
+        shell: msys2 {0}
         env:
           CGO_ENABLED: 1
+          MSYSTEM: MINGW64
         run: |
           # Run build verification (no server required)
-          if ($env:RUNNER_OS -eq "Windows") {
-            $env:PATH = "/c/msys64/mingw64/bin;$env:PATH"
-          }
           go build -v ./...
